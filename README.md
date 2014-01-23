@@ -15,4 +15,4 @@ Minimal scaffolding for quickly setting up the development environment for a new
     $ git clone https://github.com/shangaslammi/webapp-template.git
     $ cd webapp-template
     $ npm install
-    $ ./grunt
+    $ npm start 

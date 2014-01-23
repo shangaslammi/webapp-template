@@ -2,11 +2,12 @@
 require.config
   baseUrl: "js/modules"
   paths:
-    'jquery': 'https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min'
+    'jquery': '../vendor/jquery/jquery'
+    'knockout': '../vendor/knockout.js/knockout'
 
 
 define (require) ->
 
   $ = require 'jquery'
 
-  main: () -> $('#main').append('<p>Hello World</p>')
+  $('#main').append('<p>Hello World</p>')

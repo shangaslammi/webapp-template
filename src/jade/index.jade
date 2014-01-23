@@ -2,13 +2,8 @@ doctype 5
 html
   head
     link(rel='stylesheet', type='text/css', href="css/styles.css")
-    script(type='text/javascript', src='js/vendor/require.js', data-main='js/modules/app.js')
+    script(type='text/javascript', src='js/vendor/requirejs/require.js', data-main='js/modules/app.js')
     title HTML5 Template Project
   body
     #main
       h1 Hello Template
-
-    script(type='text/javascript')
-      require(['app'], function(app){ app.main() })
-
-

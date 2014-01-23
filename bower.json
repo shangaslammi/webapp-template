@@ -1,0 +1,23 @@
+{
+  "name": "webapp-template",
+  "version": "0.0.0",
+  "homepage": "https://github.com/shangaslammi/webapp-template",
+  "authors": [
+    "Sami Hangaslammi <sami.hangaslammi@leonidasoy.fi>"
+  ],
+  "main": "src/coffee/app.coffee",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "~2.1.10",
+    "knockout.js": "~3.0.0",
+    "jquery": "~2.0.3"
+  }
+}

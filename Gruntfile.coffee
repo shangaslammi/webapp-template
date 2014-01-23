@@ -2,12 +2,13 @@ module.exports = (grunt) ->
   grunt.initConfig
     coffee:
       compile:
-        files:
-          "public/js/modules/*.js": "src/coffee/**/*.coffee"
-
-        options:
-          flatten: false
-          bare: false
+        cwd: "src/coffee"
+        src: ["**/*.coffee"]
+        dest: "public/js/modules/"
+        ext: ".js"
+        expand: true
+        flatten: false
+        bare: false
 
     jade:
       compile:
@@ -22,32 +23,30 @@ module.exports = (grunt) ->
         options:
           compress: true
 
-    server:
-      port: 8000
-      base: "public"
+    connect:
+      server:
+        options:
+          port: 8000
+          base: 'public'
 
     watch:
       coffee:
         files: ["src/coffee/**/*.coffee"]
-        tasks: ["coffee", "reload"]
+        tasks: ["coffee"]
 
       stylus:
         files: ["src/stylus/*.styl"]
-        tasks: ["stylus", "reload"]
+        tasks: ["stylus"]
 
       jade:
         files: ["src/jade/*.jade"]
-        tasks: ["jade", "reload"]
+        tasks: ["jade"]
 
-    reload:
-      port: 6001
-      proxy:
-        host: 'localhost'
-        port: 8000
-
-  grunt.loadNpmTasks "grunt-reload"
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-jade"
   grunt.loadNpmTasks "grunt-contrib-stylus"
+  grunt.loadNpmTasks "grunt-contrib-watch"
+  grunt.loadNpmTasks "grunt-contrib-connect"
 
-  grunt.registerTask "default", "coffee jade stylus server reload watch"
+  grunt.registerTask "default", ["coffee", "jade", "stylus", "connect", "watch"]
+  grunt.registerTask "build", ["coffee", "jade", "stylus"]
