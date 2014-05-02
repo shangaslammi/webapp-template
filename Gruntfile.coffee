@@ -12,8 +12,13 @@ module.exports = (grunt) ->
 
     jade:
       compile:
-        files:
-          "public/index.html": "src/jade/index.jade"
+        files: [
+          cwd: "src/jade/"
+          src: ["*.jade"]
+          dest: "public/"
+          ext: ".html"
+          expand: true
+        ]
 
     stylus:
       compile:
