@@ -14,7 +14,7 @@ module.exports = (grunt) ->
       compile:
         files: [
           cwd: "src/jade/"
-          src: ["*.jade"]
+          src: ["[^_]*.jade"]
           dest: "public/"
           ext: ".html"
           expand: true
