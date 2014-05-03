@@ -62,6 +62,9 @@ module.exports = (grunt) ->
         options:
           livereload: true
 
+      grunt:
+        files: ["Gruntfile.coffee"]
+
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-jade"
   grunt.loadNpmTasks "grunt-contrib-stylus"
