@@ -37,21 +37,22 @@ module.exports = (grunt) ->
     watch:
       coffee:
         files: ["src/coffee/**/*.coffee"]
-        tasks: ["coffee"]
+        tasks: ["newer:coffee:compile"]
 
       stylus:
         files: ["src/stylus/*.styl"]
-        tasks: ["stylus"]
+        tasks: ["newer:stylus:compile"]
 
       jade:
         files: ["src/jade/*.jade"]
-        tasks: ["jade"]
+        tasks: ["newer:jade:compile"]
 
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-jade"
   grunt.loadNpmTasks "grunt-contrib-stylus"
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-connect"
+  grunt.loadNpmTasks "grunt-newer"
 
   grunt.registerTask "default", ["coffee", "jade", "stylus", "connect", "watch"]
   grunt.registerTask "build", ["coffee", "jade", "stylus"]
