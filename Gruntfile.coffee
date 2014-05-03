@@ -47,6 +47,21 @@ module.exports = (grunt) ->
         files: ["src/jade/*.jade"]
         tasks: ["newer:jade:compile"]
 
+      css:
+        files: ["public/css/**.css"]
+        options:
+          livereload: true
+
+      html:
+        files: ["public/**.html"]
+        options:
+          livereload: true
+
+      js:
+        files: ["public/js/**.js"]
+        options:
+          livereload: true
+
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-jade"
   grunt.loadNpmTasks "grunt-contrib-stylus"
