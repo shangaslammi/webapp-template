@@ -1,3 +1,6 @@
+fs   = require 'fs'
+path = require 'path'
+
 module.exports = (grunt) ->
   grunt.initConfig
     coffee:
@@ -19,6 +22,7 @@ module.exports = (grunt) ->
           ext: ".html"
           expand: true
         ]
+
 
     stylus:
       compile:
@@ -48,17 +52,17 @@ module.exports = (grunt) ->
         tasks: ["newer:jade:compile"]
 
       css:
-        files: ["public/css/**.css"]
+        files: ["public/css/**/*.css"]
         options:
           livereload: true
 
       html:
-        files: ["public/**.html"]
+        files: ["public/**/*.html"]
         options:
           livereload: true
 
       js:
-        files: ["public/js/**.js"]
+        files: ["public/js/**/*.js"]
         options:
           livereload: true
 
