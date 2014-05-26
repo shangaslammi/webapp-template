@@ -26,8 +26,13 @@ module.exports = (grunt) ->
 
     stylus:
       compile:
-        files:
-          "public/css/styles.css": "src/stylus/*.styl"
+        files: [
+          cwd: "src/stylus/"
+          src: ["[^_]*.styl"]
+          dest: "public/css"
+          ext: ".css"
+          expand: true
+        ]
 
         options:
           compress: true
