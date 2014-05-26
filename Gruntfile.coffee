@@ -49,8 +49,8 @@ module.exports = (grunt) ->
         tasks: ["newer:coffee:compile"]
 
       stylus:
-        files: ["src/stylus/*.styl"]
-        tasks: ["newer:stylus:compile"]
+        files: ["src/stylus/**/*.styl"]
+        tasks: ["stylus:compile"]
 
       jade:
         files: ["src/jade/*.jade"]
