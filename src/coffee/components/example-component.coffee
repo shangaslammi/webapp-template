@@ -2,4 +2,4 @@
 define (require) ->
 
   class ExampleComponent
-    constructor: (params) ->
+    constructor: (@params) ->
