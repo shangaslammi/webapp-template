@@ -183,5 +183,5 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-filerev"
   grunt.loadNpmTasks "grunt-usemin"
 
-  grunt.registerTask "default", ["coffee", "jade:compile", "jade:components", "jade:emails", "jade:templates", "stylus", "connect", "watch"]
+  grunt.registerTask "default", ["coffee", "jade:compile", "jade:components", "stylus", "connect", "watch"]
   grunt.registerTask "build", ["clean", "coffee", "jade", "jade:prod", "stylus", "requirejs", "filerev", "usemin"]
