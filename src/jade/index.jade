@@ -1,12 +1,22 @@
-doctype 5
+doctype html
 html
   head
     meta(charset='UTF-8')
     link(rel='stylesheet', type='text/css', href="css/styles.css")
-    script(type='text/javascript', src='js/vendor/requirejs/require.js', data-main='js/modules/app.js')
     title HTML5 Template Project
+    script(type='text/javascript').
+      require = {
+          waitSeconds: 20,
+          paths: {
+            app: '/js/modules/app'
+          }
+      }
   body
     #main
       h1 Hello Template
 
-    script(src="//localhost:35729/livereload.js")
+      example-component(params='foo: "bar"')
+
+    script(type='text/javascript', src='js/vendor/require-2.1.15.min.js', data-main='app')
+    if development
+      script(src="//localhost:35729/livereload.js")
