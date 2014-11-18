@@ -12,7 +12,7 @@ html
           }
       }
   body
-    #main
+    #main.hidden(data-bind='css: {hidden: false}')
       h1 Hello Template
 
       example-component(params='foo: "bar"')
