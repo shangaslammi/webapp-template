@@ -96,24 +96,34 @@ module.exports = (grunt) ->
         files: ["public/css/**/*.css"]
         options:
           livereload:
-            port: 9000
+            port: 35729
 
       html:
         files: ["public/**/*.html"]
         options:
           livereload:
-            port: 9000
+            port: 35729
 
       js:
         files: ["public/js/**/*.js"]
         options:
           livereload:
-            port: 9000
+            port: 35729
 
       grunt:
         files: ["Gruntfile.coffee"]
 
-    clean: ['public/*.html', 'public/js/modules/*.js', 'public/css/*.css']
+    clean:
+      html: ['public/components/*.html', 'public/*.html']
+      vendor: ['public/js/vendor']
+      js: ['public/js/**/*.js']
+      css: ['public/css/**/*.css']
+
+    copy:
+      main:
+        files: [
+          {expand: true, src: ['vendor/**'], dest: 'public/js'}
+        ]
 
     filerev:
       options:
@@ -183,5 +193,5 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-filerev"
   grunt.loadNpmTasks "grunt-usemin"
 
-  grunt.registerTask "default", ["coffee", "jade:compile", "jade:components", "stylus", "connect", "watch"]
-  grunt.registerTask "build", ["clean", "coffee", "jade", "jade:prod", "stylus", "requirejs", "filerev", "usemin"]
+  grunt.registerTask "default", ["copy", "coffee", "jade:compile", "jade:components", "stylus", "connect", "watch"]
+  grunt.registerTask "build", ["clean", "copy", "coffee", "jade", "jade:prod", "stylus", "requirejs", "filerev", "usemin"]
