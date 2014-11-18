@@ -2,12 +2,14 @@
 require.config
   baseUrl: "js/modules"
   paths:
-    'jquery': '../vendor/jquery/jquery'
-    'knockout': '../vendor/knockout.js/knockout'
+    'text': '../vendor/text-2.0.12'
+    'jquery': '../vendor/jquery-2.1.1.min'
+    'knockout': '../vendor/knockout-3.2.0.min'
 
 
 define (require) ->
+  require 'components'
 
-  $ = require 'jquery'
+  ko = require 'knockout'
 
-  $('#main').append('<p>Hello World</p>')
+  ko.applyBindings {}
