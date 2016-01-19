@@ -12,6 +12,17 @@ module.exports = (grunt) ->
         expand: true
         flatten: false
         bare: false
+      devel:
+        options:
+          sourceMap: true
+        cwd: "public/js/modules"
+        src: ["**/*.coffee"]
+        dest: "public/js/modules/"
+        ext: ".js"
+        expand: true
+        flatten: false
+        bare: false
+
 
     jade:
       compile:
@@ -78,7 +89,7 @@ module.exports = (grunt) ->
     watch:
       coffee:
         files: ["src/coffee/**/*.coffee"]
-        tasks: ["newer:coffee:compile"]
+        tasks: ["copy:sources", "newer:coffee:devel"]
 
       stylus:
         files: ["src/stylus/**/*.styl"]
@@ -123,6 +134,13 @@ module.exports = (grunt) ->
       main:
         files: [
           {expand: true, src: ['vendor/**'], dest: 'public/js'}
+        ]
+      sources:
+        files: [
+          expand: true
+          cwd: 'src/coffee'
+          src: '**/*.coffee'
+          dest: 'public/js/modules/'
         ]
 
     filerev:
@@ -182,6 +200,7 @@ module.exports = (grunt) ->
           useSourceUrl: false
 
   grunt.loadNpmTasks "grunt-contrib-coffee"
+  grunt.loadNpmTasks "grunt-contrib-copy"
   grunt.loadNpmTasks "grunt-contrib-jade"
   grunt.loadNpmTasks "grunt-contrib-stylus"
   grunt.loadNpmTasks "grunt-contrib-watch"
@@ -193,5 +212,5 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-filerev"
   grunt.loadNpmTasks "grunt-usemin"
 
-  grunt.registerTask "default", ["copy", "coffee", "jade:compile", "jade:components", "stylus", "connect", "watch"]
-  grunt.registerTask "build", ["clean", "copy", "coffee", "jade", "jade:prod", "stylus", "requirejs", "filerev", "usemin"]
+  grunt.registerTask "default", ["copy", "coffee:devel", "jade:compile", "jade:components", "stylus", "connect", "watch"]
+  grunt.registerTask "build", ["clean", "copy:main", "coffee:compile", "jade", "jade:prod", "stylus", "requirejs", "filerev", "usemin"]
