@@ -186,11 +186,6 @@ module.exports = (grunt) ->
             exclude: [
               'jquery'
             ]
-            include: [
-              'components/example-component'
-
-              'text!../../components/example-component.html'
-            ]
           ]
           throwWhen:
             optimize: false
