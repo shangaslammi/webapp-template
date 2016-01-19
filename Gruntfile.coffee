@@ -59,6 +59,8 @@ module.exports = (grunt) ->
         ]
 
     stylus:
+      options:
+        compress: true
       compile:
         files: [
           cwd: "src/stylus/"
@@ -67,9 +69,11 @@ module.exports = (grunt) ->
           ext: ".css"
           expand: true
         ]
+      components:
+        files:
+          'public/css/components.css': ['src/stylus/components/**/*.styl']
 
-        options:
-          compress: true
+
 
     connect:
       server:
