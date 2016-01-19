@@ -3,8 +3,8 @@ require.config
   baseUrl: "js/modules"
   paths:
     'text': '../vendor/text-2.0.12'
-    'jquery': '../vendor/jquery-2.1.4.min'
-    'knockout': '../vendor/knockout-3.3.0.min'
+    'jquery': '../vendor/jquery-2.2.0.min'
+    'knockout': '../vendor/knockout-3.4.0.min'
 
 define (require) ->
   require 'components'
