@@ -2,7 +2,17 @@ fs   = require 'fs'
 path = require 'path'
 
 module.exports = (grunt) ->
+  components = grunt.file.expand("src/coffee/components/*.coffee").map((c) -> path.basename(c, ".coffee"))
+
   grunt.initConfig
+    template:
+      loader:
+        options:
+          data:
+            components: components
+        files:
+          'src/coffee/components.coffee':  ['src/coffee/components.coffee.tmpl']
+
     coffee:
       compile:
         cwd: "src/coffee"
@@ -210,6 +220,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-newer"
   grunt.loadNpmTasks "grunt-filerev"
   grunt.loadNpmTasks "grunt-usemin"
+  grunt.loadNpmTasks "grunt-template"
 
-  grunt.registerTask "default", ["copy", "coffee:devel", "jade:compile", "jade:components", "stylus", "connect", "watch"]
-  grunt.registerTask "build", ["clean", "copy:main", "coffee:compile", "jade", "jade:prod", "stylus", "requirejs", "filerev", "usemin"]
+  grunt.registerTask "default", ["template", "copy", "coffee:devel", "jade:compile", "jade:components", "stylus", "connect", "watch"]
+  grunt.registerTask "build", ["clean", "template", "copy:main", "coffee:compile", "jade", "jade:prod", "stylus", "requirejs", "filerev", "usemin"]

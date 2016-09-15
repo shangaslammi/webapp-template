@@ -2,7 +2,8 @@
   "name": "webapp-template",
   "version": "0.0.1",
   "dependencies": {
-    "coffee-script": ">= 1.10.x"
+    "coffee-script": ">= 1.10.x",
+    "grunt-template": "^1.0.0"
   },
   "devDependencies": {
     "grunt": "1.0.x",
