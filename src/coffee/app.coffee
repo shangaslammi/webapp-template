@@ -1,6 +1,6 @@
 
 require.config
-  baseUrl: "js/modules"
+  baseUrl: "/static/js/modules"
   paths:
     'text': '../vendor/text-2.0.12'
     'jquery': '../vendor/jquery-3.1.0.min'

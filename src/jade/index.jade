@@ -2,19 +2,19 @@ doctype html
 html
   head
     meta(charset='UTF-8')
-    link(rel='stylesheet', type='text/css', href="css/styles.css")
-    link(rel='stylesheet', type='text/css', href="css/components.css")
+    link(rel='stylesheet', type='text/css', href="/static/css/styles.css")
+    link(rel='stylesheet', type='text/css', href="/static/css/components.css")
     title HTML5 Template Project
     script(type='text/javascript').
       require = {
           waitSeconds: 20,
           paths: {
-            app: '/js/modules/app'
+            app: '/static/js/modules/app'
           }
       }
   body
     main-app(params='foo: "bar"')
 
-    script(type='text/javascript', src='js/vendor/require-2.3.1.min.js', data-main='app')
+    script(type='text/javascript', src='/static/js/vendor/require-2.3.1.min.js', data-main='app')
     if development
       script(src="//localhost:35729/livereload.js")

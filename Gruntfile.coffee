@@ -91,10 +91,14 @@ module.exports = (grunt) ->
           port: 8000
           base: 'public'
           middleware: (connect, options, middlewares) ->
-            middlewares.push (req, res, next) -> switch
-              when /\/(components|js|css)\//.exec req.url
-                res.writeHead 404, {'Content-Type': 'text/html'}
-                res.end("Not found")
+            middlewares.unshift (req, res, next) -> switch
+              when /\/static\//.exec req.url
+                req.originalUrl = req.url
+                req.url = req.url.replace /^\/static\//, '/'
+                return next()
+              when /\/api\//.exec req.url
+                res.writeHead 200, {'Content-Type': 'application/json'}
+                res.end JSON.stringify(result: 'ok')
               else
                 res.writeHead 200, {'Content-Type': 'text/html'}
                 fs.createReadStream('public/index.html').pipe res
