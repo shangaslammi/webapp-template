@@ -1,5 +1,5 @@
 
 define (require) ->
 
-  class ExampleComponent
+  class MainApp
     constructor: (@params) ->
