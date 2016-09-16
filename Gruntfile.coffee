@@ -143,6 +143,7 @@ module.exports = (grunt) ->
       vendor: ['public/js/vendor']
       js: ['public/js/**/*.js']
       css: ['public/css/**/*.css']
+      build: ['build/**/*.coffee', 'build/**/*.map']
 
     copy:
       main:
@@ -223,4 +224,4 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-template"
 
   grunt.registerTask "default", ["template", "copy", "coffee:devel", "jade:compile", "jade:components", "stylus", "connect", "watch"]
-  grunt.registerTask "build", ["clean", "template", "copy:main", "coffee:compile", "jade", "jade:prod", "stylus", "requirejs", "filerev", "usemin"]
+  grunt.registerTask "build", ["clean", "template", "copy:main", "coffee:compile", "jade", "jade:prod", "stylus", "requirejs", "filerev", "usemin", "clean:build"]
